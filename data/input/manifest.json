@@ -1,0 +1,52 @@
+{
+  "prepared_at_seoul": "2026-11-01T19:30:53+09:00",
+  "source_files": {
+    "population": {
+      "filename": "2024년_인구_다사_100M.csv",
+      "sha256": "1211bef9776f8fbc5275d5054c8214725a4b0922f9f56b5aa73330c911d4091c"
+    },
+    "grid": {
+      "filename": "seoul_100m_grid_2025.geojson",
+      "sha256": "6e9ae6a82aff78e7a710e2e6760f0b057ea61cbbaf09ca12f3f27e13dffc9ca5"
+    },
+    "prices": {
+      "filename": "seoul_apt_price_2026_geocoded.csv",
+      "sha256": "41caf8ad2a1e2a2e3b1bf2613297f4662a78da3961b42ef5d4b37a6ab72d38da"
+    },
+    "stations": {
+      "filename": "서울시 역사마스터 정보.csv",
+      "sha256": "bd20809626417942cf8c76c81818fdec221336067ad3a38c30f04c914cbc3afb"
+    },
+    "boundary": {
+      "filename": "bnd_dong_seoul.shp",
+      "sha256": "d5148107f86250d23365c6fa952263bc8d29288c3dfaff0568bc3d75aa45fed0"
+    }
+  },
+  "source_urls": {
+    "course": "https://github.com/jslee-gses/code",
+    "population": "https://sgis.mods.go.kr/view/pss/dataBook04",
+    "privacy": "https://sgis.mods.go.kr/view/map/interactiveMap",
+    "stations": "https://data.seoul.go.kr/dataList/OA-21232/S/1/datasetView.do",
+    "prices": "https://data.seoul.go.kr/dataList/OA-21275/A/1/datasetView.do",
+    "catchment_reference": "https://chinese.gangbuk.seoul.kr/portal/main/contents.do?menuNo=200808"
+  },
+  "population_year": 2024,
+  "grid_geometry_year": 2025,
+  "population_code": "to_in_001",
+  "source_grid_rows": 61654,
+  "matched_grid_rows": 31340,
+  "unmatched_grid_rows": 30314,
+  "source_station_line_rows": 784,
+  "source_price_rows": 49959,
+  "exact_duplicate_price_rows": 4392,
+  "price_start": "2026-01-01",
+  "price_end": "2026-09-04",
+  "station_snapshot_note": "수업 제공 CSV의 고정 스냅샷. 파일 내부에 기준일 정보 없음.",
+  "boundary_sidecars": {
+    "bnd_dong_seoul.cpg": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+    "bnd_dong_seoul.dbf": "eeee48a21a865ea301d90c4619fc11b639ba33d9d6ab2783bd910c6cc19ca8e1",
+    "bnd_dong_seoul.prj": "95bbd13c6f3d841fa1ddf977eacc576cd069e3001a7998ae9b75f92920445e9d",
+    "bnd_dong_seoul.shp": "d5148107f86250d23365c6fa952263bc8d29288c3dfaff0568bc3d75aa45fed0",
+    "bnd_dong_seoul.shx": "36b7a2ea3fa732fdac2b4c558b7d43ca25e2659ecdb9919855b6e8e0692f1c76"
+  }
+}

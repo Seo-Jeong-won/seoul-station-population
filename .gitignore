@@ -1,0 +1,13 @@
+.venv/
+.cache/
+__pycache__/
+.wrangler/
+node_modules/
+.env
+.env.*
+*.log
+data/input/*
+!data/input/manifest.json
+assignment3-source.zip
+inspection.json
+inspect_data.py

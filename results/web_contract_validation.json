@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "checks": [
+    "default 500m sample and selected station",
+    "five populated chart specifications",
+    "scatter includes exactly 141 cohort points plus selection",
+    "300m updates cohort and values",
+    "800m updates cohort and values",
+    "all map modes produce usable figure specifications",
+    "station alias label does not add a second station suffix",
+    "separate Sinchon station lookup",
+    "missing population station remains selectable without a false zero",
+    "invalid search does not change the selected station",
+    "case button resets radius and synchronizes selection",
+    "chart click synchronizes selected station",
+    "reset restores the 500m Gangdong default",
+    "map selection has real projected geometry and finite coordinates",
+    "resize event processes all chart containers",
+    "all three radii and station ids are complete",
+    "generated bundle does not contain non-JSON numeric literals"
+  ],
+  "browser_rendering_verified": false,
+  "rendering_limit": "Native app access approval timed out; browser access host unavailable."
+}

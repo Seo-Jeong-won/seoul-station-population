@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "All 11 local asset/download links exist and return HTTP 200",
+    "All 6 notebook code cells executed without errors; 4 interactive plot outputs",
+    "Report equations preserve LaTeX backslashes and contain no unexpected control characters",
+    "Public output contains aggregates/code only; source input snapshots are excluded",
+    "Independent Euclidean KD-tree catchment counts and medians match polygon aggregation at 6 stations",
+    "Projected 500m polygon area differs from the analytic circle by less than 0.02%"
+  ]
+}

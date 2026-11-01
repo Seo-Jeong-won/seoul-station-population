@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="서울 308개 역의 500m 역세권 공개 거주인구와 아파트 매매가격을 비교한 과제 3 분석.">
+  <title>어느 역세권에 가장 많은 사람이 살까? | 과제 3</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/plotly.min.js"></script>
+  <script defer src="assets/data.js"></script>
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top"><span class="brand-icon" aria-hidden="true">◎</span> 서울, 역을 중심으로</a>
+    <nav aria-label="본문 탐색"><a href="#question">연구 설계</a><a href="#explore">역세권 지도</a><a href="#compare">인구와 가격</a><a href="#methods">지표·자료</a></nav>
+    <span class="assignment">과제 03</span>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="eyebrow">스마트도시데이터분석 · 공간 지표 분석</div>
+      <div class="hero-grid">
+        <div><h1>어느 역세권에<br>가장 많은 사람이 <em>살까?</em></h1>
+          <p class="hero-intro">역에서 500m. 같은 크기의 생활권에 사는 사람을 세고,<br class="desktop"> 그 안에서 거래된 아파트 가격과 비교했습니다.</p>
+          <div class="chips"><span>2024 거주인구</span><span>2026 아파트 매매</span><span>수업 자료 기준 308개 역</span></div>
+        </div>
+        <aside class="lead-result" aria-label="기본 분석 주요 결과"><span class="small-label">500m 기본 분석 · 공개값 기반 추정</span><p class="lead-number">강동역 <strong>35,944<span>명</span></strong></p><p>인구 자료 조건을 충족한 145개 역 중<br>추정 거주인구가 가장 많았습니다.<br>거리 가중 지표 1위는 <b>남구로역</b>입니다.</p><div class="lead-bottom"><span>인구–가격 순위상관</span><b>−0.083</b></div><small>자료 조건을 충족한 141개 역. 인구가 많을수록 가격이 높다는 뚜렷한 관계는 나타나지 않았습니다.</small></aside>
+      </div>
+      <div class="hero-caption">직선 반경의 거주인구 추정치이며 실제 보행권·승하차 수·혼잡도를 나타내지 않습니다. 현재 시세를 분석한 자료가 아닙니다.</div>
+    </section>
+
+    <section id="question" class="section question-section">
+      <div class="section-heading"><span class="section-no">01</span><div><span class="eyebrow">연구 주제와 질문</span><h2>많이 사는 곳이, 비싼 곳일까요?</h2></div></div>
+      <div class="question-grid"><p class="large-copy">“같은 500m 역세권에서,<br><b>거주인구 규모와 아파트 가격은<br>어떤 관계를 보이는가?</b>”</p><div><p>행정동 대신 역을 중심으로 범위를 통일했습니다. 인구와 가격 모두 같은 원 안에서 집계해, 지역 경계가 다른 값을 서로 비교하는 문제를 줄였습니다.</p><ol class="research-steps"><li><span>01</span>역세권별 인구밀도와 거리 가중 배후인구 계산</li><li><span>02</span>같은 범위의 아파트 ㎡당 거래가격과 비교</li><li><span>03</span>반경·자료 조건을 바꾸어 결과의 변화를 확인</li></ol></div></div>
+    </section>
+
+    <section id="explore" class="section explorer-section">
+      <div class="section-heading"><span class="section-no">02</span><div><span class="eyebrow">공간 시각화</span><h2>역을 골라, 생활권을 살펴보세요</h2></div></div>
+      <div class="controlbar"><div><label for="radius">역세권 반경</label><select id="radius"><option value="300">300m</option><option value="500" selected>500m · 기본</option><option value="800">800m</option></select></div><div><label for="map-metric">지도 지표</label><select id="map-metric"><option value="density">인구밀도</option><option value="population">추정 거주인구</option><option value="gravity">거리 가중 배후인구</option><option value="price_median">아파트 ㎡당 가격</option><option value="quadrant">인구 × 가격 유형</option></select></div><div class="station-control"><label for="station-search">역 이름 검색</label><input id="station-search" type="search" list="station-options" placeholder="예: 강동, 남구로, 잠실새내" autocomplete="off"><datalist id="station-options"></datalist></div><button id="reset" class="subtle-button" type="button">초기화</button></div>
+      <div class="explorer-grid"><div class="map-panel"><div class="panel-title"><span id="map-title">인구밀도 지도</span><span class="micro">휠로 확대 · 점을 눌러 선택</span></div><div id="map-chart" class="map-chart" role="img" aria-label="서울 역세권 지표 지도"></div><div class="map-footnote" id="map-note"></div></div><aside class="station-panel" id="station-detail" aria-live="polite"></aside></div>
+      <div class="note-strip"><b>자료가 없다는 것과 사람이 없다는 것은 다릅니다.</b><span>회색 점은 자료 조건을 충족하지 못한 역입니다. 인구 공개값 연결 면적 80% 이상·서울 포함 면적 95% 이상을 적용하며, 가격 비교에는 거래 10건도 요구합니다.</span></div>
+    </section>
+
+    <section id="compare" class="section">
+      <div class="section-heading"><span class="section-no">03</span><div><span class="eyebrow">비공간 시각화</span><h2>인구 규모와 집값은 함께 움직일까요?</h2></div></div>
+      <div class="analysis-metrics"><div><span id="sample-label">500m 가격 비교 표본</span><strong id="sample-count">141<small>개 역</small></strong></div><div><span>인구–가격 Spearman ρ</span><strong id="rho">−0.083</strong></div><div><span>인구–가격 Pearson r</span><strong id="pearson">−0.049</strong></div><p>상관계수는 −1~1 사이입니다.<br>0에 가까울수록 단순한 관계가 약합니다.<br><b>공간 중복을 고려해 유의성·인과효과는 주장하지 않습니다.</b></p></div>
+      <div class="chart-panel"><div class="panel-title"><span id="scatter-title">역세권 거주인구와 아파트 ㎡당 가격</span><span class="micro">점에 올리면 상세 값 · 눌러서 지도와 연결</span></div><div id="scatter-chart" class="scatter-chart" role="img" aria-label="거주인구와 아파트 가격 산점도"></div><p class="chart-note">선은 비교 표본의 인구·가격 중위값입니다. ‘고·저’는 이 표본 안의 상대적인 구분이며, 적정 가격이나 투자 가치를 뜻하지 않습니다.</p></div>
+      <div class="two-charts"><div class="chart-panel"><div class="panel-title"><span id="ranking-title">추정 거주인구 상위 15개 역</span></div><div id="ranking-chart" class="ranking-chart" role="img" aria-label="거주인구 상위 역 막대그래프"></div><p class="chart-note">인구 자료 조건을 충족한 역만 비교합니다. 가격 거래 수로 인구 순위를 제한하지 않습니다.</p></div><div class="chart-panel"><div class="panel-title"><span>지표 1과 지표 2의 관계</span></div><div id="indicator-chart" class="ranking-chart" role="img" aria-label="인구밀도와 거리 가중 배후인구 비교"></div><p class="chart-note">밀도는 전체 배후인구 규모, 거리 가중 점수는 역 가까이에 사는 인구를 더 반영합니다. 두 값은 같은 인구 자료에서 출발하므로 높은 상관이 예상됩니다.</p></div></div>
+    </section>
+
+    <section class="section findings-section" id="findings"><div class="section-heading"><span class="section-no">04</span><div><span class="eyebrow">주요 결과와 공간 해석 · 500m 기준</span><h2>인구가 비슷해도, 가격은 달랐습니다</h2></div></div><div id="findings-content"></div><div class="case-cards" id="case-cards"></div></section>
+
+    <section class="section" id="sensitivity"><div class="section-heading"><span class="section-no">05</span><div><span class="eyebrow">반경·전처리 민감도</span><h2>반경을 바꾸면 1위도 바뀝니다</h2></div></div><div class="chart-panel"><div id="sensitivity-chart" class="sensitivity-chart" role="img" aria-label="반경별 인구와 가격 상관 비교"></div></div><div id="sensitivity-table" class="table-wrap"></div><p class="body-note" id="sensitivity-note"></p><div class="robustness-grid" id="robustness"></div></section>
+
+    <section id="methods" class="section methods-section"><div class="section-heading"><span class="section-no">06</span><div><span class="eyebrow">지표 정의와 계산 방법</span><h2>같은 원, 두 가지 인구 지표</h2></div></div>
+      <div class="method-grid"><article><span class="metric-tag">지표 1 · Density</span><h3>역세권 인구밀도</h3><div class="formula">D<sub>s</sub> = P<sub>s</sub> / A<sub>s</sub></div><p>P<sub>s</sub>는 공개값이 있는 격자에서 추정한 역세권 거주인구, A<sub>s</sub>는 서울 경계 안에 포함된 원의 면적(km²)입니다. 단위는 <b>명/km²</b>. 클수록 같은 면적에 더 많은 주민이 삽니다.</p><p class="method-detail">격자 i의 인구 p<sub>i</sub>를 겹친 면적 비율 w<sub>is</sub>만큼 배분합니다.<br>P<sub>s</sub> = Σ p<sub>i</sub>w<sub>is</sub><br>w<sub>is</sub> = 격자와 역세권의 교차 면적 / 원래 격자 면적.<br>격자 내부의 인구가 고르게 분포한다고 가정한 면적 가중 추정입니다.</p></article>
+      <article><span class="metric-tag">지표 2 · Gravity-based</span><h3>거리 가중 배후인구</h3><div class="formula">G<sub>s</sub> = Σ p<sub>i</sub>w<sub>is</sub> e<sup>−βd<sub>is</sub></sup></div><p>d<sub>is</sub>는 역 대표점에서 격자 중심까지의 직선거리(m), β는 <b>ln(2)/250m</b>입니다. 250m에서 가중치 0.5, 500m에서 0.25가 됩니다. 클수록 역 가까이에 많은 주민이 분포합니다.</p><p class="method-detail">인구를 기회량으로 보는 중력형 모형을 역의 배후인구에 적용했습니다. 단위는 <b>거리 가중 인구(명 상당)</b>. 열차 운행 빈도·환승 편의·교통 혼잡을 측정한 접근성 지표는 아닙니다. 250m 반감거리는 분석자가 설정한 가정이며 반경 비교에서도 고정했습니다.</p></article></div>
+      <div class="price-method"><h3>가격은 이렇게 비교했습니다</h3><p>역세권 안의 거래마다 <b>거래금액(만원) ÷ 전용면적(㎡)</b>을 계산한 뒤 중위값을 구했습니다. 단위는 <b>만원/㎡</b>입니다. 아파트 크기의 차이를 일부 보정하지만, 준공연도·층·단지·학군 등의 차이를 통제한 가격은 아닙니다. 취소 거래와 분양권·입주권은 제외했습니다.</p></div>
+      <details><summary>자료 전처리 전체 보기</summary><div class="details-body" id="cleaning-details"></div></details>
+      <details><summary>자료 조건과 해석의 한계</summary><div class="details-body"><ul><li><b>자료 시점:</b> 2024년 인구와 2026년 1월 1일~9월 4일 거래 스냅샷을 비교합니다. 동시점 관계나 가격 변화를 측정하지 않습니다.</li><li><b>공개값과 결측:</b> SGIS 격자값에는 비밀보호 처리가 적용됩니다. 값이 연결되지 않은 격자는 무인 지역으로 확정하지 않고, 포괄률을 함께 제시합니다.</li><li><b>표본 선택:</b> 인구 연결 면적비 80%·서울 포함률 95%·거래 10건 조건으로 주거 밀집 지역이 더 많이 포함될 수 있습니다. 제외 역까지 일반화할 수 없습니다.</li><li><b>대상 주택:</b> 인구는 모든 거주형태를 포함하지만 가격은 거래된 아파트만 반영합니다. 연립·다세대·단독주택 가격이나 전체 주택 재고의 가치는 측정하지 않습니다.</li><li><b>역의 위치:</b> 환승역의 노선별 좌표 평균을 사용합니다. 실제 출입구·승강장 위치나 보행망·경사·하천 횡단은 반영하지 않습니다.</li><li><b>생활권 중복:</b> 같은 주민과 거래가 여러 역에 포함될 수 있어 역별 인구를 합산하면 중복됩니다. 역별 표본도 서로 독립적이지 않습니다.</li><li><b>거래 행 반복:</b> 고유 거래번호가 없어 완전히 같은 행도 실제 복수 거래일 수 있습니다. 기본 분석에서는 유지하고 반복행 제거 결과를 별도 비교했습니다.</li><li><b>해석 범위:</b> 가격에 영향을 미치는 소득·학군·건축연도·일자리 접근성 등을 통제하지 않았습니다. 인구의 가격 효과나 투자 가치를 추정하지 않습니다.</li></ul></div></details>
+    </section>
+
+    <section class="section sources-section" id="sources"><div class="section-heading"><span class="section-no">07</span><div><span class="eyebrow">자료 출처와 재현</span><h2>계산 과정과 결과를 함께 남깁니다</h2></div></div><div id="source-table" class="table-wrap"></div><div class="download-links"><a href="downloads/station_results_500m.csv" download>500m 역별 결과 CSV ↗</a><a href="downloads/station_results.csv" download>전체 반경 결과 CSV ↗</a><a href="downloads/analysis.ipynb" download>실행 결과 노트북 ↗</a><a href="downloads/REPORT.md" download>분석 보고서 ↗</a><a href="downloads/analysis-code.zip" download>분석 코드 묶음 ↗</a></div><div class="rubric"><b>과제 요구사항 대응</b><span>연구 질문 ✓</span><span>지표 2개·공식·변수·단위 ✓</span><span>자료·전처리 ✓</span><span>공간·비공간 시각화 ✓</span><span>주요 결과·해석·한계 ✓</span></div></section>
+  </main>
+  <footer><span>스마트도시데이터분석 · 과제 3</span><span>수업 제공 자료의 고정 스냅샷으로 작성한 탐색적 공간 분석</span></footer>
+  <noscript><p class="noscript">지도와 차트를 보려면 JavaScript를 켜세요. <a href="downloads/REPORT.md">분석 보고서</a>와 <a href="downloads/station_results_500m.csv">결과 CSV</a>도 내려받을 수 있습니다.</p></noscript>
+</body>
+</html>
