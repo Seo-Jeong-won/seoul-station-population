@@ -2,6 +2,10 @@
 
 스마트도시데이터분석 과제 3. 서울 역 중심 반경 500m의 2024년 공개 격자 거주인구를 면적 가중으로 추정하고, 2026년 아파트 ㎡당 거래가격 중위값과 비교합니다. 인구밀도와 거리 가중 배후인구가 두 분석 지표입니다.
 
+- Cloudflare 앱: https://seoul-station-population.jwseo9087.workers.dev
+- GitHub 저장소: https://github.com/Seo-Jeong-won/seoul-station-population
+- 한 줄 소개: 서울시 역세권의 거주인구 집적과 아파트 매매가격의 공간적 관계를 인구밀도와 거리 가중 배후인구 지표로 분석했습니다.
+
 ## 파일과 실행
 
 - `PLAN.md`: 과제 항목에 대응하는 분석 설계.
